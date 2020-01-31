@@ -1,1 +1,1 @@
-# MAD-P1
+# Mobile App Design (MAD) P1: Dice Game
