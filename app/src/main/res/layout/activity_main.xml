@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -25,6 +25,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/mainButtonLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -38,17 +39,19 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/playButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="play"
             android:text="@string/play"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/quitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="quit"
             android:text="@string/quit"
             android:textSize="24sp"
             android:textStyle="bold" />
