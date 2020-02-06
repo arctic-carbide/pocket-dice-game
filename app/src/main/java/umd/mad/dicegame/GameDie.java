@@ -3,13 +3,14 @@ package umd.mad.dicegame;
 import java.util.Random;
 
 public class GameDie {
-    private Random r = new Random();
-    private int lastResult;
-    private final int OFFSET = 1;
+    private final int STARTING_INDEX = 1; // an added offset to determine where an index starts
     private final int MAX_DICE_VALUE = 6;
 
+    private Random r = new Random();
+    private int lastResult;
+
     public Integer roll() {
-        lastResult = r.nextInt(MAX_DICE_VALUE) + OFFSET; // generate a number between 1 and 6 inclusive
+        lastResult = r.nextInt(MAX_DICE_VALUE) + STARTING_INDEX; // generate a number between 1 and 6 inclusive
         return lastResult;
     }
 
