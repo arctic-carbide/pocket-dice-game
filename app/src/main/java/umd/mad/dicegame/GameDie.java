@@ -7,14 +7,14 @@ public class GameDie {
     private final int MAX_DICE_VALUE = 6;
 
     private Random r = new Random();
-    private int lastResult;
+    private int lastRollResult; // the recorded result since the last roll
 
     public Integer roll() {
-        lastResult = r.nextInt(MAX_DICE_VALUE) + STARTING_INDEX; // generate a number between 1 and 6 inclusive
-        return lastResult;
+        lastRollResult = r.nextInt(MAX_DICE_VALUE) + STARTING_INDEX; // generate a number between 1 and 6 inclusive
+        return lastRollResult;
     }
 
-    public int getLastResult() {
-        return lastResult;
+    public int getLastRollResult() {
+        return lastRollResult;
     }
 }
