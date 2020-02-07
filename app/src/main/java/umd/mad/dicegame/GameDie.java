@@ -1,10 +1,5 @@
 package umd.mad.dicegame;
 
-import android.view.View;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.Random;
 
 public class GameDie {
@@ -13,6 +8,15 @@ public class GameDie {
     private static int instances = 0;
 
     private final int ID_NUMBER;
+
+    private static final int[] FACES = {
+            R.drawable.die_face_1,
+            R.drawable.die_face_2,
+            R.drawable.die_face_3,
+            R.drawable.die_face_4,
+            R.drawable.die_face_5,
+            R.drawable.die_face_6
+    };
 
     private Random roller = new Random();
     private Integer lastRollResult; // the recorded result since the last roll
@@ -34,4 +38,7 @@ public class GameDie {
     public Integer getID_NUMBER() {
         return ID_NUMBER;
     }
+
+    public int getCurrentDieFaceResource() { return FACES[lastRollResult - MIN_DICE_VALUE]; }
+
 }

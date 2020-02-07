@@ -57,15 +57,19 @@
             android:id="@+id/die1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/dice-six-faces-one" />
+            app:srcCompat="@drawable/die_face_1" />
 
         <ImageView
             android:id="@+id/die2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/dice-six-faces-one" />
+            app:srcCompat="@drawable/die_face_6" />
     </LinearLayout>
 
     <LinearLayout

@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_DICE = 2;
     private GameDie[] dice = new GameDie[MAX_DICE];
     private int[] viewIDs = {
-            R.id.score2,
-            R.id.score1
+            R.id.die1,
+            R.id.die2
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +54,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void roll() {
-        TextView textView;
+        ImageView imageView;
+        int resourceID;
 
         for (int i = 0; i < MAX_DICE; i++) {
-            textView = findViewById(viewIDs[i]);
-            textView.setText(dice[i].roll().toString());
+            imageView = findViewById(viewIDs[i]);
+
+            dice[i].roll();
+            resourceID = dice[i].getCurrentDieFaceResource();
+            imageView.setImageResource(resourceID);
         }
     }
 
