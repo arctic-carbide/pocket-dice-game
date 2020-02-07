@@ -22,21 +22,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/gameDie1"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@color/colorAccent"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:gravity="center"
+            android:text="@string/defaultNumber"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            tools:text="0" />
 
-        <ImageView
-            android:id="@+id/gameDie2"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@color/colorPrimary"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:gravity="center"
+            android:text="@string/defaultNumber"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            tools:text="0" />
     </LinearLayout>
 
     <LinearLayout

@@ -5,4 +5,5 @@
     <string name="play">Play</string>
     <string name="roll">Roll</string>
     <string name="hold">Hold</string>
+    <string name="defaultNumber">0</string>
 </resources>
