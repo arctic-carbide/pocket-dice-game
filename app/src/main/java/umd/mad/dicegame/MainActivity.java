@@ -1,25 +1,18 @@
 package umd.mad.dicegame;
 
-import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Random;
-
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_DICE = 2;
     private GameDie[] dice = new GameDie[MAX_DICE];
     private int[] viewIDs = {
-            R.id.textView,
-            R.id.textView2
+            R.id.score2,
+            R.id.score1
     };
 
 
