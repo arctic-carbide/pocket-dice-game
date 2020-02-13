@@ -1,11 +1,13 @@
 package umd.mad.dicegame;
 
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_DICE = 2;
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
             R.id.die1,
             R.id.die2
     };
+
+    private boolean turn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +45,6 @@ public class MainActivity extends AppCompatActivity {
         roll();
     }
 
-    private void preRoll(int number) {
-        try {
-            for (int i = 0; i < number; i++) {
-                roll();
-                Thread.sleep(200);
-            }
-        }
-        catch (Exception e) {
-            Log.e("EXCEPTION", e.getMessage());
-        }
-    }
-
     private void roll() {
         ImageView imageView;
         int resourceID;
@@ -64,9 +56,26 @@ public class MainActivity extends AppCompatActivity {
             resourceID = dice[i].getCurrentDieFaceResource();
             imageView.setImageResource(resourceID);
         }
+
+        endTurn();
+    }
+
+    private void endTurn() {
+        TextView textView = findViewById(R.id.textView);
+
+        if (turn) {
+            textView.setText(R.string.player2text);
+            textView.setBackgroundResource(R.drawable.p2color);
+        }
+        else {
+            textView.setText(R.string.player1text);
+            textView.setBackgroundResource(R.drawable.p1color);
+        }
+
+        turn = !turn;
     }
 
     public void hold(View view) {
-
+        //
     }
 }

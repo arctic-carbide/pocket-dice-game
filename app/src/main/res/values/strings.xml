@@ -6,4 +6,6 @@
     <string name="roll">Roll</string>
     <string name="hold">Hold</string>
     <string name="defaultNumber">0</string>
+    <string name="player1text">Player 1\'s Turn</string>
+    <string name="player2text">Players 2\'s Turn</string>
 </resources>
