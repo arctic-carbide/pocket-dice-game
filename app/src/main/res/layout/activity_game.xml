@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/score1"
+            android:id="@+id/player1Score"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
             tools:text="0" />
 
         <TextView
-            android:id="@+id/score2"
+            android:id="@+id/player2Score"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -78,6 +78,23 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/die_face_1" />
 
+        <TextView
+            android:id="@+id/turnScore"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/die2"
+            app:layout_constraintStart_toEndOf="@+id/die1"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/die2"
             android:layout_width="match_parent"
@@ -86,6 +103,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/die_face_6" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -99,20 +117,22 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/quitButton"
+            android:id="@+id/holdButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@android:drawable/btn_default"
             android:onClick="hold"
             android:text="@string/hold"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/playButton"
+            android:id="@+id/rollButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@android:drawable/btn_default"
             android:onClick="roll"
             android:text="@string/roll"
             android:textSize="24sp"
