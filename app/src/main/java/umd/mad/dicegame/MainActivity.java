@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_DICE = 2;
     private int btnMaterial;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // apply rule effects
+        setHoldActive(true); // initially set to true
         if (DM.hasAnyOnes()) {
             turnPlayer.turnScore = 0;
             if (DM.hasAllOnes()) {
@@ -64,13 +67,9 @@ public class MainActivity extends AppCompatActivity {
             endTurn();
         }
         else {
+            turnPlayer.turnScore += DM.getLastTotal();
             if (DM.hasAllSameNonOne()) {
-                turnPlayer.totalScore += DM.getLastTotal();
                 setHoldActive(false);
-            }
-            else {
-                turnPlayer.turnScore += DM.getLastTotal();
-                setHoldActive(true);
             }
         }
 
@@ -85,17 +84,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void endTurn() {
-        TextView textView = findViewById(R.id.textView);
+        TextView tvPlayer = findViewById(R.id.currentPlayerTurn);
 
         if (p1Turn) {
             turnPlayer = player2;
-            textView.setText(R.string.player2text);
-            textView.setBackgroundResource(R.drawable.p2color);
+            tvPlayer.setText(R.string.player2text);
+            tvPlayer.setBackgroundResource(R.drawable.p2color);
         }
         else {
             turnPlayer = player1;
-            textView.setText(R.string.player1text);
-            textView.setBackgroundResource(R.drawable.p1color);
+            tvPlayer.setText(R.string.player1text);
+            tvPlayer.setBackgroundResource(R.drawable.p1color);
         }
 
         p1Turn = !p1Turn;
@@ -113,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
             tvTotalScore = findViewById(R.id.player2Score);
         }
 
-        tvTurnScore.setText(turnPlayer.turnScore.toString());
-        tvTotalScore.setText(turnPlayer.totalScore.toString());
+        tvTurnScore.setText(String.format(Locale.US, "%d", turnPlayer.turnScore));
+        tvTotalScore.setText(String.format(Locale.US, "%d", turnPlayer.totalScore));
 
 
     }
