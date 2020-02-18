@@ -42,7 +42,7 @@
             android:id="@+id/rollButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="play"
+            android:onClick="onClickPlay"
             android:text="@string/play"
             android:textSize="24sp"
             android:textStyle="bold" />

@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_DICE = 2;
-    private int btnMaterial;
+    private static final int WIN_CONDITION = 50;
     private int[] viewIDs = {
             R.id.die1,
             R.id.die2
@@ -38,12 +38,20 @@ public class MainActivity extends AppCompatActivity {
         System.exit(0);
     }
 
-    public void play(View view) {
+    public void onClickPlay(View view) {
         setContentView(R.layout.activity_game);
         // init();
     }
 
-    public void roll(View view) {
+    public void onClickRoll(View view) {
+
+        roll();
+        checkRules();
+        updateScoreUI();
+
+    }
+
+    private void roll() {
         ImageView imageView;
         int resourceID;
 
@@ -55,12 +63,15 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageResource(resourceID);
         }
 
+    } // end roll
+
+    private void checkRules() {
 
         // apply rule effects
         setHoldActive(true); // initially set to true
-        if (DM.hasAnyOnes()) {
+        if (DM.hasAnyOnes()) { // the player loses their turn total
             turnPlayer.turnScore = 0;
-            if (DM.hasAllOnes()) {
+            if (DM.hasAllOnes()) { // the player loses their total score for the game
                 turnPlayer.totalScore = 0;
             }
 
@@ -68,12 +79,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             turnPlayer.turnScore += DM.getLastTotal();
-            if (DM.hasAllSameNonOne()) {
+            if (DM.hasAllSameNonOne()) { // the player rolls double but must roll again
                 setHoldActive(false);
-            }
-        }
+            } // else, the player can roll again or onClickHold
+        } // end if-else
 
-        updateScoreUI();
+    }
+
+    private boolean doesPlayerWin() {
+        return turnPlayer.totalScore >= WIN_CONDITION;
     }
 
     private void setHoldActive(boolean enabled) {
@@ -118,12 +132,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void hold(View view) {
+    public void onClickHold(View view) {
 
         turnPlayer.totalScore += turnPlayer.turnScore;
         turnPlayer.turnScore = 0;
-
         updateScoreUI();
-        endTurn();
+
+        try {
+
+            if (doesPlayerWin()) throw new Exception();
+            endTurn();
+
+        }
+        catch (Exception e) {
+            setContentView(R.layout.activity_main);
+        }
     }
 }
