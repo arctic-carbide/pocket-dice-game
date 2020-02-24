@@ -40,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickPlay(View view) {
         setContentView(R.layout.activity_game);
-        // init();
+
+        player1 = new Player();
+        player2 = new Player();
+        p1Turn = true;
+
+        turnPlayer = player1;
     }
 
     public void onClickRoll(View view) {
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean doesPlayerWin() {
+    private boolean doesTurnPlayerWin() {
         return turnPlayer.totalScore >= WIN_CONDITION;
     }
 
@@ -132,6 +137,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onClickReturn(View view) {
+        setContentView(R.layout.activity_main);
+    }
+
     public void onClickHold(View view) {
 
         turnPlayer.totalScore += turnPlayer.turnScore;
@@ -140,12 +149,26 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            if (doesPlayerWin()) throw new Exception();
+            if (doesTurnPlayerWin()) throw new Exception();
             endTurn();
 
         }
         catch (Exception e) {
-            setContentView(R.layout.activity_main);
+            TextView tvWinnerMessage = findViewById(R.id.winnerMessage);
+
+            findViewById(R.id.holdButton).setEnabled(false);
+            findViewById(R.id.rollButton).setEnabled(false);
+            findViewById(R.id.returnButton).setVisibility(View.VISIBLE);
+
+
+            tvWinnerMessage.setVisibility(View.VISIBLE);
+            if (p1Turn) {
+                tvWinnerMessage.setText(R.string.player1_win_message);
+            }
+            else {
+                tvWinnerMessage.setText(R.string.player2_win_message);
+            }
+
         }
     }
 }
